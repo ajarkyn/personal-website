@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aylin Jarkynbaeva - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FFB6D9;
+            color: #C2185B;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #FFF5F7;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(194, 24, 91, 0.15);
+        }
+
+        header {
+            background: linear-gradient(135deg, #FFFFE0 0%, #FFFACD 100%);
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.1);
+        }
+
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4em;
+            font-weight: 700;
+            color: #C2185B;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(194, 24, 91, 0.1);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8em;
+            color: #E91E63;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6D9;
+            display: inline-block;
+        }
+
+        p, li {
+            font-size: 1.05em;
+            color: #C2185B;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .section-content {
+            background-color: #FFEBEE;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #FFB6D9;
+            margin-top: 15px;
+        }
+
+        .find-me-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .find-me-links a {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #FFB6D9, #FF69B4);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 4px 10px rgba(194, 24, 91, 0.2);
+        }
+
+        .find-me-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(194, 24, 91, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #FFB6D9;
+            font-size: 0.95em;
+            color: #E91E63;
+        }
+
+        .highlight {
+            background-color: #FFF9C4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .find-me-links {
+                flex-direction: column;
+            }
+
+            .find-me-links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AYLIN</h1>
+        </header>
+
+        <section>
+            <h2>About Me</h2>
+            <div class="section-content">
+                <p>
+                    Hi! My name is Aylin Jarkynbaeva. I'm very social, creative, and athletic. I love to spend time with my friends, go shopping, play sports, and travel!
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interests & Hobbies</h2>
+            <div class="section-content">
+                <ul>
+                    <li>🧶 <span class="highlight">Crochet</span></li>
+                    <li>🏐 <span class="highlight">Volleyball</span></li>
+                    <li>🌍 <span class="highlight">Travel</span></li>
+                    <li>🏊 <span class="highlight">Swim</span></li>
+                    <li>🍰 <span class="highlight">Baking</span></li>
+                    <li>📚 <span class="highlight">Reading</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Achievements</h2>
+            <div class="section-content">
+                <ul>
+                    <li>✨ Successfully completed challenging projects with outstanding results</li>
+                    <li>✨ Developed strong leadership and teamwork skills</li>
+                    <li>✨ Earned recognition for creative problem-solving</li>
+                    <li>✨ Built meaningful connections and lasting relationships</li>
+                    <li>✨ Continuously improved skills through dedication and practice</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>My Goal</h2>
+            <div class="section-content">
+                <p>
+                    My ultimate goal is to make a meaningful difference in the world while continuously growing as a person. 
+                    I aim to combine my <span class="highlight">creativity, technical skills, and passion</span> to create 
+                    innovative solutions that help others. I want to inspire those around me, pursue excellence in everything 
+                    I do, and build a life filled with purpose, joy, and genuine connections.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Favorite Things</h2>
+            <div class="section-content">
+                <ul>
+                    <li>💕 <span class="highlight">Color</span> - Pink (obviously!)</li>
+                    <li>🍰 <span class="highlight">Treat</span> - Anything with chocolate or caramel</li>
+                    <li>🎬 <span class="highlight">Type of Movie</span> - Feel-good comedies and inspiring dramas</li>
+                    <li>📱 <span class="highlight">Activity</span> - Scrolling through social media for inspiration</li>
+                    <li>🌸 <span class="highlight">Flower</span> - Cherry blossoms</li>
+                    <li>☕ <span class="highlight">Drink</span> - Iced matcha or warm cappuccino</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Find Me</h2>
+            <div class="section-content">
+                <p>Feel free to connect with me on various platforms:</p>
+                <div class="find-me-links">
+                    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                    <a href="mailto:aylin@example.com">Email</a>
+                    <a href="https://www.github.com" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Aylin Jarkynbaeva. All rights reserved. ✨</p>
+        </footer>
+    </div>
+</body>
+</html>
