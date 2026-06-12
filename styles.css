@@ -273,6 +273,10 @@ body.nav-open {
     display: block;
 }
 
+.card-3 .achievement-image {
+    object-position: top center;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 25px;
