@@ -6,6 +6,53 @@
     <title>My Goal - Aylin Jarkynbaeva</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Bebas+Neue&family=Chewy&family=Cinzel:wght@500;700&family=DM+Serif+Display:ital@0;1&family=League+Spartan:wght@700;800&family=Luckiest+Guy&family=Poppins:wght@400;500;600;700&family=Righteous&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .goal-hero-image {
+            width: 100%;
+            max-width: 900px;
+            height: 290px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 0 auto 24px;
+            border-radius: 14px;
+            border: 2px solid #FF8CC5;
+            box-shadow: 0 8px 20px rgba(194, 24, 91, 0.12);
+        }
+
+        .goal-content-layout {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .goal-content-layout p {
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .goal-logo {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 700px) {
+            .goal-hero-image {
+                height: 210px;
+            }
+
+            .goal-content-layout {
+                gap: 14px;
+            }
+
+            .goal-logo {
+                width: 105px;
+                height: 105px;
+            }
+        }
+    </style>
 </head>
 <body class="nav-open">
     <nav class="nav-menu">
@@ -23,10 +70,15 @@
             <h1>AYLIN JARKYNBAEVA</h1>
         </header>
 
+        <img class="goal-hero-image" src="images/stanford.jpeg" alt="Stanford University campus">
+
         <section>
             <h2>My Goal</h2>
             <div class="section-content">
-                <p>I am working towards getting accepted into and attending my dream school, <span class="highlight">Stanford University</span>.</p>
+                <div class="goal-content-layout">
+                    <p>I am working towards getting accepted into and attending my dream school, <span class="highlight">Stanford University</span>.</p>
+                    <img class="goal-logo" src="images/logo.jpeg" alt="Stanford logo">
+                </div>
             </div>
         </section>
 

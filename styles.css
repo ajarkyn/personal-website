@@ -45,10 +45,7 @@ h1 {
     font-family: var(--heading-font);
     font-size: 50px;
     font-weight: 700;
-    background: linear-gradient(135deg, #FFB6D9, #FF69B4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #FF69B4;
     letter-spacing: clamp(1px, 0.9vw, 8px);
     text-shadow: 2px 2px 4px rgba(194, 24, 91, 0.1);
     animation: bounce 2s infinite;
@@ -68,12 +65,16 @@ section {
 h2 {
     font-family: var(--heading-font);
     font-size: 1.8em;
-    color: #E91E63;
+    color: #FF69B4;
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 3px solid #FFB6D9;
     display: inline-block;
     letter-spacing: 0.5px;
+}
+
+h3 {
+    color: #FF69B4;
 }
 
 p, li {
@@ -233,7 +234,6 @@ body.nav-open {
 }
 
 .achievement-card h3 {
-    color: #C2185B;
     margin-top: 0;
     margin-bottom: 8px;
     font-size: 1.15em;
@@ -258,8 +258,8 @@ body.nav-open {
 
 .achievement-image-frame {
     flex-shrink: 0;
-    width: 220px;
-    height: 220px;
+    width: 170px;
+    height: 170px;
     border: 2px solid #FF8CC5;
     border-radius: 12px;
     overflow: hidden;
@@ -306,6 +306,10 @@ body.nav-open {
     transition: filter 0.3s ease;
 }
 
+.favorite-5 img {
+    object-position: center 85%;
+}
+
 .favorite-item:hover img {
     filter: brightness(0.5);
 }
@@ -332,7 +336,6 @@ body.nav-open {
 }
 
 .favorite-overlay h3 {
-    color: #FFFFFF;
     font-size: 1.2em;
     margin-bottom: 8px;
     font-family: 'Fredoka', sans-serif;
@@ -349,7 +352,7 @@ body.nav-open {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
-}
+
     .container {
         padding: 25px;
     }
@@ -372,13 +375,13 @@ body.nav-open {
     }
 
     .achievement-card {
-        flex-direction: column !important;
-        align-items: stretch;
+        align-items: center;
+        gap: 14px;
     }
 
     .achievement-image-frame {
-        width: 100%;
-        height: 200px;
+        width: 130px;
+        height: 130px;
     }
 
     .achievement-image-placeholder {

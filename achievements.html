@@ -5,7 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements - Aylin Jarkynbaeva</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Bebas+Neue&family=Chewy&family=Cinzel:wght@500;700&family=DM+Serif+Display:ital@0;1&family=League+Spartan:wght@700;800&family=Luckiest+Guy&family=Poppins:wght@400;500;600;700&family=Righteous&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260616a">
+    <style>
+        .achievement-card {
+            display: flex !important;
+            flex-direction: row-reverse !important;
+            align-items: center !important;
+            gap: 14px !important;
+        }
+
+        .achievement-image-frame {
+            width: 175px !important;
+            height: 175px !important;
+            flex: 0 0 175px !important;
+        }
+
+        .achievement-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .achievement-text {
+            flex: 1 1 auto !important;
+        }
+
+        @media (max-width: 560px) {
+            .achievement-card {
+                gap: 10px !important;
+            }
+
+            .achievement-image-frame {
+                width: 130px !important;
+                height: 130px !important;
+                flex-basis: 130px !important;
+            }
+        }
+    </style>
 </head>
 <body class="nav-open">
     <nav class="nav-menu">
