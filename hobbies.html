@@ -6,6 +6,28 @@
     <title>Interests & Hobbies - Aylin Jarkynbaeva</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Bebas+Neue&family=Chewy&family=Cinzel:wght@500;700&family=DM+Serif+Display:ital@0;1&family=League+Spartan:wght@700;800&family=Luckiest+Guy&family=Poppins:wght@400;500;600;700&family=Righteous&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .hobby-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .hobby-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hobby-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 768px) {
+            .hobby-card {
+                gap: 14px;
+            }
+        }
+    </style>
 </head>
 <body class="nav-open">
     <nav class="nav-menu">
@@ -26,14 +48,67 @@
         <section>
             <h2>Interests & Hobbies</h2>
             <div class="section-content">
-                <ul>
-                    <li><span class="highlight">Crochet</span></li>
-                    <li><span class="highlight">Volleyball</span></li>
-                    <li><span class="highlight">Travel</span></li>
-                    <li><span class="highlight">Swim</span></li>
-                    <li><span class="highlight">Baking</span></li>
-                    <li><span class="highlight">Reading</span></li>
-                </ul>
+                <div class="hobby-grid">
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Baking</h3>
+                            <p>I love baking because it is fun to try new recipes and sweet treats are so much yummier when I know I made them myself!</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/baking.jpg" alt="Fresh baked treats arranged on a table">
+                        </div>
+                    </article>
+
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Travel</h3>
+                            <p>Travelling helps me discover new places and find beauty everywhere. Seeing different countries and cities inspires me!</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/travel.jpg" alt="Travel moment from one of Aylin's trips">
+                        </div>
+                    </article>
+
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Volleyball</h3>
+                            <p>I've been playing volleyball for 3 years and was team captain for my school this year. It's fun and helps me with teamwork while keeping me active.</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/volleyball.jpg" alt="Aylin playing volleyball">
+                        </div>
+                    </article>
+
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Swimming</h3>
+                            <p>I've been swimming for longer than I can remember, whether it be artistic or regular swimming. It's a way for me to challenge and push myself, which I love.</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/swimming.jpg" alt="Aylin swimming during practice or competition">
+                        </div>
+                    </article>
+
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Crochet</h3>
+                            <p>I learned how to crochet about 5 years ago from my aunt and I find that it's a great way to relax (especially with a good TV show or movie!). I enjoy making plushies for myself, family, and friends!</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/crochet.jpg" alt="Crochet project made by Aylin">
+                        </div>
+                    </article>
+
+                    <article class="achievement-card hobby-card">
+                        <div class="achievement-text">
+                            <h3>Reading</h3>
+                            <p>Reading is a fun way for me to escape reality and easily turn a boring time into an interesting one.</p>
+                        </div>
+                        <div class="achievement-image-frame">
+                            <img class="achievement-image" src="images/reading.jpg" alt="Aylin reading a book">
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 

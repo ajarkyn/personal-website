@@ -328,7 +328,7 @@ body.nav-open {
     padding: 20px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    background: rgba(194, 24, 91, 0.85);
+    background: #FFB6D9;
 }
 
 .favorite-item:hover .favorite-overlay {
@@ -339,6 +339,7 @@ body.nav-open {
     font-size: 1.2em;
     margin-bottom: 8px;
     font-family: 'Fredoka', sans-serif;
+    color: #FFFFFF;
 }
 
 .favorite-overlay p {
