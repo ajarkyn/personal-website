@@ -37,6 +37,24 @@
             box-shadow: 0 8px 20px rgba(194, 24, 91, 0.2);
         }
 
+        .about-photo-figure {
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .about-side-caption {
+            text-align: center;
+            font-size: 0.82rem;
+            line-height: 1.35;
+            color: #C2185B;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #FFB6D9;
+            border-radius: 10px;
+            padding: 6px 8px;
+            font-weight: 500;
+        }
+
         .about-mini-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -85,14 +103,26 @@
         <a href="extra-info.html">Extra Info</a>
     </nav>
 
-    <aside class="about-side-photos left" aria-hidden="true">
-        <img class="about-side-photo" src="images/alima.jpg" alt="">
-        <img class="about-side-photo" src="images/siblings.JPG" alt="">
+    <aside class="about-side-photos left">
+        <figure class="about-photo-figure">
+            <img class="about-side-photo" src="images/alima.jpg" alt="Aylin with Alima">
+            <figcaption class="about-side-caption">Me and Alima</figcaption>
+        </figure>
+        <figure class="about-photo-figure">
+            <img class="about-side-photo" src="images/siblings.JPG" alt="Aylin with her siblings">
+            <figcaption class="about-side-caption">My siblings and me</figcaption>
+        </figure>
     </aside>
 
-    <aside class="about-side-photos right" aria-hidden="true">
-        <img class="about-side-photo" src="images/friends.JPG" alt="">
-        <img class="about-side-photo" src="images/lucy.jpg?v=2" alt="">
+    <aside class="about-side-photos right">
+        <figure class="about-photo-figure">
+            <img class="about-side-photo" src="images/friends.JPG" alt="Aylin with friends">
+            <figcaption class="about-side-caption">Hanging out with friends</figcaption>
+        </figure>
+        <figure class="about-photo-figure">
+            <img class="about-side-photo" src="images/lucy.jpg?v=2" alt="Aylin's cat Lucy">
+            <figcaption class="about-side-caption">My cat Lucy</figcaption>
+        </figure>
     </aside>
 
     <div class="container">
