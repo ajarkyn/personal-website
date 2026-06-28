@@ -15,13 +15,15 @@
             width: ${size}px;
             height: ${size}px;
             pointer-events: auto;
-            z-index: 2000;
+            z-index: 99999;
             filter: drop-shadow(0 6px 12px rgba(194, 24, 91, 0.28));
             opacity: 0.98;
             background: transparent;
             border: 0;
             padding: 0;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
         }
 
         .pixel-pal-sprite {
@@ -41,7 +43,7 @@
             border: 2px solid #FFB6D9;
             border-radius: 14px;
             box-shadow: 0 16px 30px rgba(194, 24, 91, 0.22);
-            z-index: 2100;
+            z-index: 100000;
             display: none;
         }
 
@@ -223,7 +225,14 @@
         pal.setAttribute("aria-expanded", "false");
     };
 
-    pal.addEventListener("click", togglePanel);
+    const onPalActivate = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        togglePanel();
+    };
+
+    pal.addEventListener("click", onPalActivate);
+    pal.addEventListener("touchend", onPalActivate, { passive: false });
     if (closeBtn) {
         closeBtn.addEventListener("click", closePanel);
     }
