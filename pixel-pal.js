@@ -5,9 +5,6 @@
     window.__pixelPalInit = true;
 
     const size = 86;
-    const editorPasswordKey = "siteEditorPassword";
-    const defaultEditorPassword = "editme123";
-    const editorSessionKey = "siteEditorUnlocked";
 
     const style = document.createElement("style");
     style.textContent = `
@@ -34,78 +31,6 @@
             height: 100%;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-        }
-
-        .nav-menu {
-            padding-right: 58px;
-        }
-
-        .nav-lock-btn {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 38px;
-            height: 38px;
-            border: 2px solid #FFFFFF;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #C2185B;
-            color: #FFFFFF;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.28);
-        }
-
-        .nav-lock-btn:hover {
-            background: #E91E63;
-        }
-
-        .site-editor-toolbar {
-            position: fixed;
-            top: 74px;
-            right: 14px;
-            z-index: 100001;
-            background: #FFFFFF;
-            border: 2px solid #FFB6D9;
-            border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(194, 24, 91, 0.2);
-            padding: 10px;
-            display: none;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .site-editor-toolbar.open {
-            display: flex;
-        }
-
-        .site-editor-label {
-            color: #C2185B;
-            font-size: 0.86rem;
-            font-weight: 600;
-            margin-right: 4px;
-            white-space: nowrap;
-        }
-
-        .site-editor-btn {
-            border: 0;
-            border-radius: 8px;
-            padding: 7px 10px;
-            background: #FF69B4;
-            color: #FFFFFF;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .site-editor-btn.secondary {
-            background: #C2185B;
-        }
-
-        .site-edit-target {
-            outline: 2px dashed rgba(255, 105, 180, 0.5);
-            outline-offset: 2px;
         }
 
         .quick-stats-panel {
@@ -181,39 +106,9 @@
                 right: 10px;
                 bottom: 92px;
             }
-
-            .site-editor-toolbar {
-                right: 10px;
-                top: 112px;
-                left: 10px;
-                justify-content: space-between;
-            }
-
-            .site-editor-label {
-                font-size: 0.8rem;
-            }
         }
     `;
     document.head.appendChild(style);
-
-    const navMenu = document.querySelector(".nav-menu");
-    const lockBtn = document.createElement("button");
-    lockBtn.className = "nav-lock-btn";
-    lockBtn.type = "button";
-    lockBtn.setAttribute("aria-label", "Unlock site editor");
-    lockBtn.innerHTML = `<span aria-hidden="true" style="font-size:18px;line-height:1">🔒</span>`;
-    if (navMenu && !navMenu.querySelector(".nav-lock-btn")) {
-        navMenu.appendChild(lockBtn);
-    }
-
-    const editorBar = document.createElement("div");
-    editorBar.className = "site-editor-toolbar";
-    editorBar.innerHTML = `
-        <span class="site-editor-label">Edit Mode Enabled</span>
-        <button type="button" class="site-editor-btn" data-action="save">Save Page</button>
-        <button type="button" class="site-editor-btn secondary" data-action="exit">Exit</button>
-    `;
-    document.body.appendChild(editorBar);
 
     const pal = document.createElement("button");
     pal.className = "pixel-pal";
@@ -330,147 +225,17 @@
         pal.setAttribute("aria-expanded", "false");
     };
 
-    const editableSelector = "h1, h2, h3, p, li, figcaption";
-    let isEditMode = false;
-
-    const getEditorPassword = () => localStorage.getItem(editorPasswordKey) || defaultEditorPassword;
-
-    const setImageEditState = (enabled) => {
-        document.querySelectorAll("img").forEach((img) => {
-            if (img.closest(".pixel-pal") || img.closest(".quick-stats-panel") || img.closest(".nav-menu")) {
-                return;
-            }
-            img.style.cursor = enabled ? "crosshair" : "";
-            img.setAttribute("title", enabled ? "Click to change image path" : "");
-        });
-    };
-
-    const setEditMode = (enabled) => {
-        isEditMode = enabled;
-        document.querySelectorAll(editableSelector).forEach((node) => {
-            if (node.closest(".nav-menu") || node.closest(".site-editor-toolbar") || node.closest(".quick-stats-panel")) {
-                return;
-            }
-            if (enabled) {
-                node.setAttribute("contenteditable", "true");
-                node.classList.add("site-edit-target");
-            } else {
-                node.removeAttribute("contenteditable");
-                node.classList.remove("site-edit-target");
-            }
-        });
-        setImageEditState(enabled);
-        editorBar.classList.toggle("open", enabled);
-        lockBtn.style.background = enabled ? "#8E0053" : "#C2185B";
-    };
-
-    const serializeCurrentPage = () => {
-        const clone = document.documentElement.cloneNode(true);
-        clone.querySelectorAll("[contenteditable]").forEach((el) => el.removeAttribute("contenteditable"));
-        clone.querySelectorAll(".site-edit-target").forEach((el) => el.classList.remove("site-edit-target"));
-        clone.querySelectorAll(".site-editor-toolbar").forEach((el) => el.remove());
-        clone.querySelectorAll(".quick-stats-panel.open").forEach((el) => el.classList.remove("open"));
-        return "<!DOCTYPE html>\n" + clone.outerHTML;
-    };
-
-    const downloadCurrentPage = () => {
-        const html = serializeCurrentPage();
-        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
-        const link = document.createElement("a");
-        const fileName = (window.location.pathname.split("/").pop() || "index.html").trim() || "index.html";
-        link.href = URL.createObjectURL(blob);
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        URL.revokeObjectURL(link.href);
-    };
-
-    const ensurePassword = () => {
-        if (localStorage.getItem(editorPasswordKey)) {
-            return true;
-        }
-        const firstPassword = window.prompt("Create an editor password (first time setup):", "");
-        if (!firstPassword) {
-            return false;
-        }
-        localStorage.setItem(editorPasswordKey, firstPassword);
-        return true;
-    };
-
-    const authenticateEditor = () => {
-        if (!ensurePassword()) {
-            return false;
-        }
-        const input = window.prompt("Enter editor password:", "");
-        if (input !== getEditorPassword()) {
-            window.alert("Incorrect password.");
-            return false;
-        }
-        sessionStorage.setItem(editorSessionKey, "1");
-        return true;
-    };
-
-    const handleImageEditClick = (event) => {
-        if (!isEditMode) {
-            return;
-        }
-        const target = event.target;
-        if (!(target instanceof HTMLImageElement)) {
-            return;
-        }
-        if (target.closest(".nav-menu") || target.closest(".pixel-pal") || target.closest(".quick-stats-panel") || target.closest(".site-editor-toolbar")) {
-            return;
-        }
-        event.preventDefault();
-        const currentSrc = target.getAttribute("src") || "";
-        const nextSrc = window.prompt("Enter a new image path or URL:", currentSrc);
-        if (nextSrc && nextSrc.trim()) {
-            target.setAttribute("src", nextSrc.trim());
-        }
-    };
-
     const onPalActivate = (event) => {
         event.preventDefault();
         event.stopPropagation();
         togglePanel();
     };
 
-    const onLockClick = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const unlocked = sessionStorage.getItem(editorSessionKey) === "1";
-        if (!unlocked && !authenticateEditor()) {
-            return;
-        }
-        setEditMode(!isEditMode);
-    };
-
     pal.addEventListener("click", onPalActivate);
     pal.addEventListener("touchend", onPalActivate, { passive: false });
-    lockBtn.addEventListener("click", onLockClick);
-    lockBtn.addEventListener("touchend", onLockClick, { passive: false });
     if (closeBtn) {
         closeBtn.addEventListener("click", closePanel);
     }
-
-    editorBar.addEventListener("click", (event) => {
-        const target = event.target;
-        if (!(target instanceof HTMLElement)) {
-            return;
-        }
-        const action = target.getAttribute("data-action");
-        if (action === "save") {
-            downloadCurrentPage();
-            return;
-        }
-        if (action === "exit") {
-            setEditMode(false);
-        }
-    });
-
-    document.addEventListener("click", handleImageEditClick, true);
 
     document.addEventListener("click", (event) => {
         if (!panel.classList.contains("open")) {
@@ -488,13 +253,6 @@
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             closePanel();
-            if (isEditMode) {
-                setEditMode(false);
-            }
         }
     });
-
-    if (sessionStorage.getItem(editorSessionKey) === "1") {
-        setEditMode(true);
-    }
 })();
