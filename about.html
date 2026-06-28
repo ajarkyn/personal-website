@@ -7,6 +7,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Bebas+Neue&family=Chewy&family=Cinzel:wght@500;700&family=DM+Serif+Display:ital@0;1&family=League+Spartan:wght@700;800&family=Luckiest+Guy&family=Poppins:wght@400;500;600;700&family=Righteous&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        .about-side-photos {
+            position: fixed;
+            top: 110px;
+            bottom: 28px;
+            width: min(18vw, 210px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 16px;
+            pointer-events: none;
+            z-index: 120;
+        }
+
+        .about-side-photos.left {
+            left: 12px;
+        }
+
+        .about-side-photos.right {
+            right: 12px;
+        }
+
+        .about-side-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 3px solid #FFB6D9;
+            box-shadow: 0 8px 20px rgba(194, 24, 91, 0.2);
+        }
+
         .about-mini-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -30,6 +60,12 @@
             margin-bottom: 0;
         }
 
+        @media (max-width: 1240px) {
+            .about-side-photos {
+                display: none;
+            }
+        }
+
         @media (max-width: 640px) {
             .about-mini-grid {
                 grid-template-columns: 1fr;
@@ -43,10 +79,21 @@
         <a class="active" href="about.html">About Me</a>
         <a href="hobbies.html">Interests & Hobbies</a>
         <a href="achievements.html">Achievements</a>
-        <a href="goal.html">My Goal</a>
+        <a href="goal.html">My Goals</a>
         <a href="favorites.html">Favorite Things</a>
         <a href="findme.html">Find Me</a>
+        <a href="extra-info.html">Extra Info</a>
     </nav>
+
+    <aside class="about-side-photos left" aria-hidden="true">
+        <img class="about-side-photo" src="images/alima.jpg" alt="">
+        <img class="about-side-photo" src="images/siblings.JPG" alt="">
+    </aside>
+
+    <aside class="about-side-photos right" aria-hidden="true">
+        <img class="about-side-photo" src="images/friends.JPG" alt="">
+        <img class="about-side-photo" src="images/lucy.jpg?v=2" alt="">
+    </aside>
 
     <div class="container">
         <header>
@@ -85,5 +132,7 @@
             <p>© 2026 Aylin Jarkynbaeva. All rights reserved.</p>
         </footer>
     </div>
+
+    <script src="pixel-pal.js"></script>
 </body>
 </html>
