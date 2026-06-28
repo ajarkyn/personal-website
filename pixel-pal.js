@@ -14,10 +14,14 @@
             bottom: 16px;
             width: ${size}px;
             height: ${size}px;
-            pointer-events: none;
+            pointer-events: auto;
             z-index: 2000;
             filter: drop-shadow(0 6px 12px rgba(194, 24, 91, 0.28));
             opacity: 0.98;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
         }
 
         .pixel-pal-sprite {
@@ -27,6 +31,67 @@
             image-rendering: crisp-edges;
         }
 
+        .quick-stats-panel {
+            position: fixed;
+            right: 20px;
+            bottom: ${size + 32}px;
+            width: min(92vw, 320px);
+            background: #FFFFFF;
+            color: #C2185B;
+            border: 2px solid #FFB6D9;
+            border-radius: 14px;
+            box-shadow: 0 16px 30px rgba(194, 24, 91, 0.22);
+            z-index: 2100;
+            display: none;
+        }
+
+        .quick-stats-panel.open {
+            display: block;
+        }
+
+        .quick-stats-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-bottom: 1px solid #FFD4E8;
+            background: linear-gradient(135deg, #FFF4FA 0%, #FFF9D6 100%);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .quick-stats-header h2 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #E91E63;
+        }
+
+        .quick-stats-close {
+            border: 0;
+            background: #FF69B4;
+            color: #FFFFFF;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .quick-stats-body {
+            padding: 12px 16px 14px;
+        }
+
+        .quick-stats-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .quick-stats-list li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+            color: #C2185B;
+        }
+
         @media (max-width: 768px) {
             .pixel-pal {
                 width: 72px;
@@ -34,13 +99,20 @@
                 right: 10px;
                 bottom: 10px;
             }
+
+            .quick-stats-panel {
+                right: 10px;
+                bottom: 92px;
+            }
         }
     `;
     document.head.appendChild(style);
 
-    const pal = document.createElement("div");
+    const pal = document.createElement("button");
     pal.className = "pixel-pal";
-    pal.setAttribute("aria-hidden", "true");
+    pal.type = "button";
+    pal.setAttribute("aria-label", "Open Quick Stats");
+    pal.setAttribute("aria-expanded", "false");
 
     const sprite = document.createElement("canvas");
     sprite.className = "pixel-pal-sprite";
@@ -48,6 +120,25 @@
     sprite.height = 60;
     pal.appendChild(sprite);
     document.body.appendChild(pal);
+
+    const panel = document.createElement("section");
+    panel.className = "quick-stats-panel";
+    panel.setAttribute("aria-hidden", "true");
+    panel.innerHTML = `
+        <div class="quick-stats-header">
+            <h2>Quick Stats</h2>
+            <button type="button" class="quick-stats-close" aria-label="Close Quick Stats">×</button>
+        </div>
+        <div class="quick-stats-body">
+            <ul class="quick-stats-list">
+                <li>Social, creative, and athletic</li>
+                <li>Loves travel, sports, and friends</li>
+                <li>Attending Phillips Exeter Academy</li>
+                <li>Dream school: Stanford University</li>
+            </ul>
+        </div>
+    `;
+    document.body.appendChild(panel);
 
     const ctx = sprite.getContext("2d");
     if (!ctx) {
@@ -117,4 +208,42 @@
     };
 
     drawCharacter();
+
+    const closeBtn = panel.querySelector(".quick-stats-close");
+
+    const togglePanel = () => {
+        const isOpen = panel.classList.toggle("open");
+        panel.setAttribute("aria-hidden", String(!isOpen));
+        pal.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    const closePanel = () => {
+        panel.classList.remove("open");
+        panel.setAttribute("aria-hidden", "true");
+        pal.setAttribute("aria-expanded", "false");
+    };
+
+    pal.addEventListener("click", togglePanel);
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closePanel);
+    }
+
+    document.addEventListener("click", (event) => {
+        if (!panel.classList.contains("open")) {
+            return;
+        }
+        const target = event.target;
+        if (!(target instanceof Node)) {
+            return;
+        }
+        if (!panel.contains(target) && !pal.contains(target)) {
+            closePanel();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closePanel();
+        }
+    });
 })();
