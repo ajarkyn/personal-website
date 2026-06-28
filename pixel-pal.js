@@ -133,9 +133,9 @@
         </div>
         <div class="quick-stats-body">
             <ul class="quick-stats-list">
-                <li>Social, creative, and athletic</li>
-                <li>Loves travel, sports, and friends</li>
-                <li>Attending Phillips Exeter Academy</li>
+                <li>Weighted GPA: 4.7</li>
+                <li>Sports: Swimming and volleyball</li>
+                <li>Clubs: French Honor Society, Psychology Club, HOSA, Red Cross, Pen Pal Club</li>
                 <li>Dream school: Stanford University</li>
             </ul>
         </div>
