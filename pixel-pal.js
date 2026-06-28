@@ -45,20 +45,21 @@
             right: 14px;
             top: 50%;
             transform: translateY(-50%);
-            width: 32px;
-            height: 32px;
-            border: 0;
+            width: 38px;
+            height: 38px;
+            border: 2px solid #FFFFFF;
             border-radius: 999px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.35);
+            background: #C2185B;
             color: #FFFFFF;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.28);
         }
 
         .nav-lock-btn:hover {
-            background: rgba(255, 255, 255, 0.55);
+            background: #E91E63;
         }
 
         .site-editor-toolbar {
@@ -200,7 +201,7 @@
     lockBtn.className = "nav-lock-btn";
     lockBtn.type = "button";
     lockBtn.setAttribute("aria-label", "Unlock site editor");
-    lockBtn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-6 7.73V18a1 1 0 1 0 2 0v-1.27a2 2 0 1 0-2 0ZM10 9V7a2 2 0 1 1 4 0v2h-4Z"/></svg>`;
+    lockBtn.innerHTML = `<span aria-hidden="true" style="font-size:18px;line-height:1">🔒</span>`;
     if (navMenu && !navMenu.querySelector(".nav-lock-btn")) {
         navMenu.appendChild(lockBtn);
     }
@@ -360,7 +361,7 @@
         });
         setImageEditState(enabled);
         editorBar.classList.toggle("open", enabled);
-        lockBtn.style.background = enabled ? "rgba(255, 255, 255, 0.65)" : "rgba(255, 255, 255, 0.35)";
+        lockBtn.style.background = enabled ? "#8E0053" : "#C2185B";
     };
 
     const serializeCurrentPage = () => {
